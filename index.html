@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./index.css">
+	<script defer src="./index.js"></script>
+	<title> Elemtura </title>
+</head>
+
+<!-- This code was written by devteeo of teeo_algorithms any attempt to copy this file and clone it is totally acceptable but please don't, i love you developer infact i love all developers so please dont do something that will hurt me.  -->
+
+<body class="flex">
+	<div id="app" class="flex">
+		<div class="game__board__container flex bdrs">
+			
+			<main class="container flex bdrs" id="home">
+
+				<div class="dash--board flex bdrs bd--3">
+
+					<div class="change flex bdrs circle"> 
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+							<path 
+							d="M160 32c-35.3 0-64 28.7-64 64V320c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H160zM396 138.7l96 144c4.9 7.4 5.4 16.8 1.2 24.6S480.9 320 472 320H328 280 200c-9.2 0-17.6-5.3-21.6-13.6s-2.9-18.2 2.9-25.4l64-80c4.6-5.7 11.4-9 18.7-9s14.2 3.3 18.7 9l17.3 21.6 56-84C360.5 132 368 128 376 128s15.5 4 20 10.7zM256 128c0 17.7-14.3 32-32 32s-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32zM48 120c0-13.3-10.7-24-24-24S0 106.7 0 120V344c0 75.1 60.9 136 136 136H456c13.3 0 24-10.7 24-24s-10.7-24-24-24H136c-48.6 0-88-39.4-88-88V120z"  />
+						</svg>
+					</div>
+
+					<div class="score--holder circle bd--3 flex"> 
+						<span id="score1"></span>
+					</div>
+
+					<div class="name--holder bdrs bd--3 flex">
+						<div id="username"></div>
+						<div class="edit--holder">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+								<path 
+								d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.8 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"    />
+							</svg>
+						</div>
+
+						<input type="text" class="userInput width--90" value="Player">
+						<div class="save--holder">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+								<path 
+								d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z" />
+							</svg>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="big--board bd--3 bdrs flex">
+					<div class="games--holder--container flex">
+
+						<div class="games--holder flex bdrs ">
+							<div class="info--holder flex ">
+									<div class="hook--text"> Atomura </div>
+										<small class="info--text">
+											You play by choosing the options with the correct symbol and atomic number to the Element Given 
+										</small>
+									<a href="#atom__guess" class="start bdrs width--90"> Play </a>
+							</div>
+
+							<div class="img--holder height--90 flex">
+								<?xml version="1.0" encoding="iso-8859-1"?>
+								<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"  x="0px" y="0px"
+									viewBox="0 0 496 496" style="enable-background:new 0 0 496 496;" xml:space="preserve">
+											<path 
+											d="M483.72,423.228L367.016,306.532c10.816-20.2,16.984-43.24,16.984-67.704c0-10.76-1.384-21.744-3.968-32.72L448,138.14
+												l18.344,18.344l11.312-11.312l-18.344-18.344L352,19.516L333.656,1.172l-11.312,11.312l18.344,18.344L272.72,98.796
+												c-10.976-2.584-21.96-3.968-32.72-3.968c-79.4,0-144,64.6-144,144c0,11.288,1.44,22.232,3.912,32.776l-77.68,77.68
+												C7.888,363.62,0,382.668,0,402.948c0,41.84,34.04,75.88,75.88,75.88c20.264,0,39.32-7.896,53.656-22.224l77.68-77.68
+												c10.552,2.464,21.496,3.904,32.784,3.904c24.464,0,47.504-6.168,67.704-16.984L424.4,482.54
+												c7.92,7.928,18.448,12.288,29.664,12.288c23.12,0,41.936-18.816,41.936-41.944C496,441.692,491.64,431.164,483.72,423.228z
+												M236.848,326.668c-46-1.64-83.048-38.688-84.688-84.688l59.152-59.152h169.376L236.848,326.668z M325.032,261.108
+												c-8.032,30.616-32.128,54.72-62.752,62.752L325.032,261.108z M154.968,216.548c8.032-30.616,32.128-54.72,62.752-62.752
+												L154.968,216.548z M352,42.14l84.688,84.688l-40,40H227.312L352,42.14z M33.544,360.596L76,318.14
+												c7.48,6.024,12,15.024,12,24.688c0,17.648-14.352,32-32,32c-9.608,0-18.56-4.472-24.584-11.888
+												C32.12,362.156,32.792,361.348,33.544,360.596z M118.224,445.292c-11.312,11.304-26.352,17.536-42.344,17.536
+												c-33.016,0-59.88-26.864-59.88-59.88c0-9.304,2.168-18.248,6.152-26.36c8.872,8.968,20.976,14.24,33.848,14.24
+												c26.472,0,48-21.528,48-48c0-13.976-6.248-27.008-16.672-36.016l17.856-17.856c14.584,39.08,45.608,70.104,84.688,84.688
+												L118.224,445.292z M240,366.828c-70.576,0-128-57.424-128-128s57.424-128,128-128c6.288,0,12.68,0.568,19.112,1.576l-22.6,22.6
+												C180.792,136.868,136,182.66,136,238.828c0,57.344,46.656,104,104,104c56.168,0,101.96-44.784,103.824-100.512l22.6-22.6
+												c1.008,6.432,1.576,12.824,1.576,19.112C368,309.404,310.576,366.828,240,366.828z M454.064,478.828
+												c-6.936,0-13.448-2.696-18.344-7.6L321.728,357.244c14.328-9.92,26.768-22.36,36.688-36.688L472.4,434.54
+												c4.904,4.904,7.6,11.424,7.6,18.344C480,467.188,468.368,478.828,454.064,478.828z"/>
+											<path d="M240,278.828c17.648,0,32-14.352,32-32s-14.352-32-32-32s-32,14.352-32,32S222.352,278.828,240,278.828z M240,230.828
+												c8.824,0,16,7.176,16,16c0,8.824-7.176,16-16,16c-8.824,0-16-7.176-16-16C224,238.004,231.176,230.828,240,230.828z"/>
+								</svg>
+							</div>
+						</div>
+
+						<div class="games--holder flex bdrs">
+							<div class="info--holder flex ">
+									<div class="hook--text"> Elementura </div>
+										<small class="info--text">
+											You play by typing the element name with the Symbol and atomic number given
+										</small>
+									<a href="#el__write" class="spell bdrs width--90"> Play </a>
+							</div>
+
+							<div class="img--holder height--90 flex big">
+								<?xml version="1.0" encoding="iso-8859-1"?>
+									<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+										viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+											<path 
+											d="M390.282,461.769l-70.03-152.793v-208.37h16.3V84.984H175.126v15.622h16.624v208.37l-70.031,152.793 c-5.055,11.03-4.161,23.711,2.392,33.923C130.665,505.904,141.82,512,153.953,512h204.096c12.133,0,23.289-6.097,29.842-16.308 C394.443,485.48,395.336,472.798,390.282,461.769z M207.371,312.385v-18.07h16.703v-15.622h-16.703V262.03h48.988v-15.622h-48.988	v-16.663h16.703v-15.622h-16.703V197.46h39.615v-15.622h-39.615v-16.663h16.703v-15.622h-16.703V132.89h48.988v-15.622h-48.988	v-16.663h97.258v211.78l16.115,35.161c-4.223,2.799-17.337,8.286-45.558-3.738c-30.581-13.029-62.322-8.767-80.182-4.441	L207.371,312.385z M374.742,487.255c-3.72,5.798-9.805,9.123-16.693,9.123H153.953c-6.888,0-12.973-3.325-16.693-9.123	c-3.721-5.798-4.208-12.715-1.338-18.977l50.434-110.038c1.909-0.723,44.364-16.397,82.71-0.059	c15.277,6.509,27.387,8.763,36.834,8.762c9.837,0,16.783-2.443,21.411-5.072l48.77,106.407	C378.951,474.54,378.462,481.457,374.742,487.255z"/>
+
+										<g>
+											<rect x="207.415" y="367.216" width="16.663" height="15.622"/>
+										</g>
+
+										<g>
+											<rect x="224.079" y="383.879" width="15.622" height="15.622"/>
+										</g>
+
+										<g>
+											<rect x="304.27" y="439.076" width="15.622" height="15.622"/>
+										</g>
+
+										<g>
+											<rect x="199.084" y="439.076" width="16.663" height="15.622"/>
+										</g>
+
+										<g>
+											<rect x="231.369" y="464.071" width="15.622" height="15.622"/>
+										</g>
+
+										<g>
+											<rect x="280.317" y="399.501" width="16.663" height="15.622"/>
+										</g>
+
+										<g>
+											<rect x="336.555" y="464.071" width="15.622" height="15.622"/>
+										</g>
+
+										<g>
+											<rect x="151.177" y="464.071" width="15.622" height="15.622"/>
+										</g>
+
+										<g>
+											<rect x="175.13" y="399.501" width="16.663" height="15.622"/>
+										</g>
+
+										<path 
+										d="M316.083,0.38c-6.293-1.126-12.651,0.267-17.896,3.922c-5.247,3.654-8.755,9.133-9.88,15.427	c-1.126,6.293,0.267,12.649,3.921,17.896c3.654,5.246,9.133,8.754,15.427,9.88c1.418,0.254,2.832,0.376,4.226,0.376	c11.367,0,21.481-8.151,23.551-19.725v-0.001C337.756,15.164,329.076,2.704,316.083,0.38z M320.055,25.407	c-0.808,4.513-5.138,7.526-9.65,6.72c-2.187-0.391-4.09-1.61-5.359-3.432c-1.268-1.823-1.753-4.03-1.361-6.217	c0.391-2.186,1.61-4.089,3.433-5.358c1.409-0.982,3.051-1.495,4.734-1.495c0.493,0,0.987,0.044,1.482,0.132	C317.847,16.566,320.862,20.894,320.055,25.407z	"/>
+
+										<path d="M256,20.669c-13.199,0-23.937,10.738-23.937,23.937c0,13.199,10.737,23.937,23.937,23.937	c13.198,0,23.936-10.738,23.936-23.937S269.197,20.669,256,20.669z M256,52.922c-4.584,0-8.315-3.73-8.315-8.315	c0-4.586,3.73-8.315,8.315-8.315c4.584,0,8.314,3.73,8.314,8.315S260.585,52.922,256,52.922z	"/>
+
+										<g>
+											<rect x="288.649" y="61.029" width="15.622" height="15.622"/>
+										</g>
+
+										<g>
+											<rect x="199.084" y="12.082" width="16.663" height="15.622"/>
+										</g>
+
+										<g>
+											<rect x="183.462" y="61.029" width="15.622" height="15.622"/>
+										</g>
+									</svg>
+							</div>
+						</div>
+
+						<div class="games--holder flex bdrs">
+							<div class="info--holder flex ">
+									<div class="hook--text"> Minutura </div>
+									<small class="info--text" >
+										Can you beat your High Score
+									</small>
+									<div class="hook--text" id="high--score"></div>
+									<a href="#minute__game" class="start--min bdrs width--90"> Play </a>
+							</div>
+
+							<div class="img--holder height--90 flex">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+									<path 
+									d="M232 120C232 106.7 242.7 96 256 96C269.3 96 280 106.7 280 120V243.2L365.3 300C376.3 307.4 379.3 322.3 371.1 333.3C364.6 344.3 349.7 347.3 338.7 339.1L242.7 275.1C236 271.5 232 264 232 255.1L232 120zM256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0zM48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48C141.1 48 48 141.1 48 256z"/>
+								</svg>
+							</div>
+						</div>
+
+						<div class="games--holder flex bdrs">
+							<div class="info--holder flex ">
+								<div class="hook--text"> Memora </div>
+								<small class="info--text" >
+									View all the element
+								</small>
+							<a href="#element__list" class="start--min bdrs width--90"> Go now! </a>
+						</div>
+						</div>
+					</div>
+				</div>
+
+			</main>
+
+			<main class="container flex bdrs" id="atom__guess">
+				<div class="element--holder flex bdrs"> </div>
+				<div class="note--holder flex">
+					<div class="score--holder flex">  <span id="score"> </span> </div>
+					<div class="boost--holder flex circle boost">
+						<p class="boost"> <sup class="boost"> 1 </sup> / <sub class="boost"> 2 </sub> </p>
+					</div>
+				</div>
+				<div class="option--holder flex"></div>
+				<div class="name--holder flex">
+					<p> teeo_algorithms </p>
+					<a href="#home" class="return--home circle">
+						<div class="return--holder circle">
+							<?xml version="1.0" encoding="iso-8859-1"?>
+							<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+								viewBox="0 0 32.002 32.002" 
+								style="enable-background:new 0 0 32.002 32.002;" 
+								xml:space="preserve" 	>
+			
+								<g>
+									<path 
+										style="fill:var( --black )" 
+										d="M28.157,3.719c-4.957-4.957-13.605-4.961-18.559,0L4.001,9.32V4h-4v12.007h12v-3.92H6.978 l5.453-5.537c3.445-3.449,9.453-3.449,12.898,0.004c1.723,1.723,2.672,4.012,2.672,6.534c0,2.357-0.949,4.646-2.672,6.373 l-3.016,3.014l2.828,2.828l3.016-3.008c2.477-2.486,3.844-5.783,3.844-9.207C32.001,9.496,30.634,6.199,28.157,3.719z"	/>
+									<polygon 
+										style="fill:var( --black )" 
+										points="18.45,32.002 15.622,29.166 18.45,26.338 21.278,29.166 "	/>
+								</g>
+
+							</svg>
+						</div>
+					</a> 
+				</div>
+			</main>
+
+			<main class="container flex bdrs" id="el__write">
+				<div class="inputs--holder width--90 flex bg--white"></div>
+				<div class="tip--holder circle flex bd--3"><p id="spell--p"></p> </div>
+				<div class="letter--holder">
+						<div class="letters flex">q</div>
+						<div class="letters flex">w</div>
+						<div class="letters flex">e</div>
+						<div class="letters flex">r</div>
+						<div class="letters flex">t</div>
+						<div class="letters flex">y</div>
+						<div class="letters flex">u</div>
+						<div class="letters flex">i</div>
+						<div class="letters flex">o</div>
+						<div class="letters flex">p</div>
+						<aside></aside>
+						<div class="letters flex">a</div>
+						<div class="letters flex">s</div>
+						<div class="letters flex">d</div>
+						<div class="letters flex">f</div>
+						<div class="letters flex">g</div>
+						<div class="letters flex">h</div>
+						<div class="letters flex">j</div>
+						<div class="letters flex">k</div>
+						<div class="letters flex">l</div>
+						<aside></aside>
+						<div class="letters flex enter large">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+									<path 
+									d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z" />
+								</svg>
+						</div>
+						<div class="letters flex">z</div>
+						<div class="letters flex">x</div>
+						<div class="letters flex">c</div>
+						<div class="letters flex">v</div>
+						<div class="letters flex">b</div>
+						<div class="letters flex">n</div>
+						<div class="letters flex">m</div>
+						<div class="letters flex back large"> 
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+								<path 
+								d="M576 128c0-35.3-28.7-64-64-64H205.3c-17 0-33.3 6.7-45.3 18.7L9.4 233.4c-6 6-9.4 14.1-9.4 22.6s3.4 16.6 9.4 22.6L160 429.3c12 12 28.3 18.7 45.3 18.7H512c35.3 0 64-28.7 64-64V128zM271 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/>
+							</svg>	
+						</div>
+				</div>
+			</main>
+
+			<main class="container flex bdrs" id="minute__game">
+				<div class="elements--holder flex bdrs"> </div>
+				<div class="note--holder flex">
+					<div class="high--score--holder flex">  
+						Score  :  <span id="min--score"></span> 
+					</div>
+					<div class="boost--holder flex circle" id="timer"></div>
+				</div>
+				<div class="options--holder flex"></div>
+				<div class="name--holder flex">
+					<p> teeo_algorithms </p>
+					<a href="#home" class="return--home circle">
+						<div class="return--holder circle">
+							<?xml version="1.0" encoding="iso-8859-1"?>
+							<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+								viewBox="0 0 32.002 32.002" 
+								style="enable-background:new 0 0 32.002 32.002;" 
+								xml:space="preserve" 	>
+			
+								<g>
+									<path 
+										style="fill:var( --black )" 
+										d="M28.157,3.719c-4.957-4.957-13.605-4.961-18.559,0L4.001,9.32V4h-4v12.007h12v-3.92H6.978 l5.453-5.537c3.445-3.449,9.453-3.449,12.898,0.004c1.723,1.723,2.672,4.012,2.672,6.534c0,2.357-0.949,4.646-2.672,6.373 l-3.016,3.014l2.828,2.828l3.016-3.008c2.477-2.486,3.844-5.783,3.844-9.207C32.001,9.496,30.634,6.199,28.157,3.719z"	/>
+									<polygon 
+										style="fill:var( --black )" 
+										points="18.45,32.002 15.622,29.166 18.45,26.338 21.278,29.166 "	/>
+								</g>
+
+							</svg>
+						</div>
+					</a> 
+				</div>
+			</main>
+
+			<main class="container flex bdrs" id="element__list">
+				<div class="element--container">
+					<div class="element flex">
+						<span class="el--name"> Elements </span>
+						<span class="atom--no"> Atom </span>
+						<span class="el--symbol"> Symbol </span>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</body>
+
+</html>

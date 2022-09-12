@@ -1,0 +1,578 @@
+ *, *::after, *::before {
+   margin: 0 auto;
+   overflow: hidden;
+   user-select: none;
+   color: var(--white);
+   text-decoration: none;
+   box-sizing: border-box;
+   scroll-behavior: smooth;
+   transition: all 500ms ease-in-out;
+   font-family: 'myfont', sans-serif;  
+}
+@font-face {
+  font-family: 'myfont';
+  src: url(myfont.ttf);
+}
+@font-face {
+  font-family: 'myfontlight';
+  src: url(myfontlight.ttf);
+}
+body {
+  padding: 0;
+  height: 100vh; width: 100vw;
+  
+  background-color: var( --black );
+}
+p { text-shadow: 1px 1px 1px var( --black ) }
+svg { pointer-events: none  }
+span {
+  color: inherit;
+  pointer-events: none;
+  font-size: var(--span);
+}
+sub{
+  color: inherit;
+  font-size: var(--sub);
+  font-family: 'myfontlight', arial;
+}
+
+
+/* most occuring codes */
+:root {
+  --sub: 11px;
+  --span: 18px;
+  --size: 130px;
+  --width: 0;
+
+  --red: #ff1010;
+  --white: #f7f7f4;
+  --green:  #75fc16;
+  --black: #2b2b2b;
+  --yellow: #fdcb07;
+}
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bdrs {
+  -webkit-border-radius: 5px;
+ -moz-border-radius: 5px;
+ border-radius: 5px;
+}
+#app::after, #app:before,
+.circle {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+.bd--3 { border: 3px solid var(--white)  }
+
+.width--90 {  width: 90%  }
+.height--90 {  height: 90%  }
+
+.bg--red { background-color: var(--red) }
+.bg--green { background-color: var(--green) }
+.bg--white { background-color: var(--white) }
+
+.col--white { color: var(--white) }
+.col--black { color: var(--black) }
+p span.unseen {
+  opacity: 0;
+  border-right: 1px solid var( --white );
+
+  animation: text_anim 250ms;
+}
+
+/* view control */
+#app {
+  min-width: 400px;
+  min-height: 600px;
+  
+  position: relative;
+}
+#app::after {
+  content: '';
+  z-index: -1;
+  top: 0;left: 0;
+  position: absolute;
+  background-color: var(--yellow);
+  height: var(--size); width: var(--size);
+  box-shadow: 1px 1px 2px var(--white),  0 -1px 2px var(--yellow);
+  animation: bg_color_anim 5s linear infinite;
+}
+#app::before {
+  content: '';
+  z-index: -1;
+  bottom: 0;right: 0;
+  position: absolute;
+  background-color: var(--red);
+  height: var(--size); width: var(--size);
+
+  animation: bg_color_anim 5s linear infinite reverse;
+}
+#app.style__2::after,
+#app.style__2::before {
+  -webkit-border-radius: 5%;
+  -moz-border-radius: 5%;
+  border-radius: 5%;
+
+  transform-origin: center;
+  animation: rotate_anim 30s linear infinite;
+}
+
+
+
+/* animation section */
+@keyframes bg_color_anim {
+  0%,100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(15%);
+  }
+}
+@keyframes rotate_anim {
+  0% {  transform: rotate(5deg) }
+  50%  {  transform: rotate(180deg) }
+  100%  {  transform: rotate(360deg) }
+}
+@keyframes freeze {
+  0% {
+    pointer-events: none;
+  }
+}
+@keyframes text_anim {
+  to {
+   opacity: 1;
+ }
+}
+
+
+
+/* game-- section */
+
+.game__board__container {
+  width: 300px; height: 500px;
+  background-color: rgba(255,255,255,0.2);
+  
+  backdrop-filter: blur(12px);
+  -webkit-box-shadow:  0 0 8px var( --black );
+  -moz-box-shadow:  0 0 8px var( --black );
+  box-shadow:  0 0 8px var( --black );
+}
+#app main {
+  border: 3px solid var( --white );
+  width: 90%; height: 90%;
+  position: relative;
+
+  display: none;
+  flex-direction: column;
+
+  -webkit-box-shadow:  0 0 8px var( --black );
+  -moz-box-shadow:  0 0 8px var( --black );
+  box-shadow:  0 1px 8px var( --black ), 1px -1px 1px var(--white);
+}
+#app main:target {
+  display: flex;
+}
+#app #minute__game .elements--holder,
+#app #atom__guess .element--holder {
+  border: 3px solid var( --white );
+  width: 90%; height: 20%;
+  margin: 5% auto 3% ;
+}
+#app #minute__game .elements--holder p span,
+#app #atom__guess .element--holder p span {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+#app #minute__game .elements--holder.correct,
+#app #atom__guess .element--holder.correct {
+  color: var(--green);
+  pointer-events: none;
+  background-color: var(--green);
+}
+#app #minute__game .elements--holder.incorrect,
+#app #atom__guess .element--holder.incorrect {
+  color: var(--red);
+  pointer-events: none;
+  background-color: var(--red);
+}
+#app #minute__game .note--holder,
+#app #atom__guess .note--holder {
+  height: 12%; width: 95%;
+}
+#app #minute__game .note--holder .score--holder,
+#app #atom__guess .note--holder .score--holder {
+  border: 1px solid var(--white);
+  width: 150px; height: 30px;
+  border-radius: 20px;
+  font-size: 1.3em;
+  
+  position: relative;
+}
+#app #minute__game .note--holder .score--holder #score3 ,
+#app #atom__guess .note--holder .score--holder #score { 
+  color: var(--black);
+  text-shadow: 0 0 0 transparent
+}
+#app #minute__game .note--holder .score--holder::after,
+#app #atom__guess .note--holder .score--holder::after {
+  content: '';
+  z-index: -1;
+  top: 0;left: 0;
+  position: absolute;
+  background-color: var(--white);
+  height: 110%; width: var(--width);
+}
+#app #minute__game .note--holder .boost--holder,
+#app #atom__guess .note--holder .boost--holder {
+  border: 3px solid var( --white );
+ 
+  height: 57px; width: 57px;
+  word-spacing: -2px;
+  transform: scale(0.5);
+} 
+#app #atom__guess .note--holder .boost--holder sub,
+#app #atom__guess .note--holder .boost--holder sup {
+  font-size: 20px;
+}
+#app #atom__guess .note--holder .boost--holder.used {
+  --white : rgb(179, 174, 174);
+}
+#app #minute__game .options--holder,
+#app #atom__guess .option--holder {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 90%; height: 50%;
+  margin: 2% auto 5% auto;
+}
+#app #minute__game .options--holder .options,
+#app #atom__guess .option--holder .option {
+  color:  var( --black );
+  font-weight: 700;
+  background-color: var( --white );
+  flex-direction: column;
+  width: 45%; height: 35%;
+  -webkit-box-shadow:  0 0 2px var( --black );
+  -moz-box-shadow:  0 0 2px var( --black );
+  box-shadow:  0 0 2px var( --black );
+}
+#app #minute__game .options--holder .options.correct,
+#app #minute__game .options--holder .options.incorrect ,
+#app #atom__guess .option--holder .option.unseen,
+#app #atom__guess .option--holder .option.correct,
+#app #atom__guess .option--holder .option.incorrect {
+  opacity: 0;
+  pointer-events: none;
+}
+#app #minute__game .options--holder .options.right.incorrect,
+#app #atom__guess .option--holder .option.right.incorrect {
+  opacity: 1;
+}
+#app #minute__game .name--holder,
+#app #atom__guess .name--holder {
+   height: 12%; width: 90%;
+}
+#app #minute__game .name--holder a ,
+#app #atom__guess .name--holder a { 
+  position: absolute;
+  left: -2.5%; bottom: -2.5%;
+  padding: 10px;
+  background-color: var( --white );
+ }
+#app #minute__game .name--holder a .return--holder svg,
+#app #atom__guess .name--holder a .return--holder svg {
+  width: 20px; 
+  transform: scale(0.9);
+}
+
+
+
+
+/* home Section */
+
+#app #home {
+  height: 90%; 
+}
+#app #home .dash--board {
+  position: relative;
+  margin-bottom: 5%;
+  padding-top: 7%;
+  width: 90%; height: 20%; 
+}
+#app #home .dash--board .change {
+  padding: 8px;
+  position: absolute;
+  right: 0; top: -2%;
+}
+#app.style__2 #home .dash--board .change {
+  background-color: var(--white);
+  right: -2.5%; top: -7%;
+}
+#app #home .dash--board .change svg {
+  width: 21px;
+  fill: var(--white);
+}
+#app.style__2 #home .dash--board .change svg {
+  fill: var(--black);
+}
+#app #home .dash--board .score--holder {
+  transform: scale(0.8);
+  width: 55px; height: 55px;
+  box-shadow: 2px 2px 5px var(--black);
+}
+#app #home .dash--board .score--holder #score1 { 
+  font-size: 1.2em;
+  color: var(--black) ;
+  text-shadow: 0 0 0 transparent;
+}
+#app #home .dash--board .score--holder::after {
+  content: '';
+  z-index: -1;
+  bottom: 0;left: 0;
+  position: absolute;
+  background-color: var(--white);
+  width: 110%; height: var(--width);
+}
+#app #home .dash--board .name--holder {
+  position: relative;
+  transform: scale(0.9);
+  letter-spacing: 1px;
+  padding: 3px 30% 3px 7px;
+}
+#app #home .dash--board .name--holder.collect {
+  padding: 3px;
+  display: block;
+}
+#app #home .dash--board .name--holder .userInput,
+#app #home .dash--board .name--holder .save--holder,
+#app #home .dash--board .name--holder.collect .edit--holder,
+#app #home .dash--board .name--holder.collect #username {
+  display: none;
+}
+#app #home .dash--board .name--holder.collect .userInput {
+  width: 80%;
+  float: left;
+  display: block;
+  border: 0; outline: 0;
+  background-color: transparent;
+  border-bottom: 3px solid var(--white);
+}
+ #app #home .dash--board .name--holder.collect .save--holder {
+  padding: 0;
+  display: block;
+  right: 3%; bottom: 0%;
+  animation: freeze 1s;
+} 
+#app #home .dash--board .name--holder .save--holder ,
+#app #home .dash--board .name--holder .edit--holder {
+  padding: 15px;
+  position: absolute;
+  right: -7%; bottom: calc(-100% + 15px);
+}
+#app #home .dash--board .name--holder .save--holder svg,
+#app #home .dash--board .name--holder .edit--holder svg {
+  width: 17px;
+  fill: var(--white);
+}
+#app #home .big--board {
+  overflow-x: scroll;
+  justify-content: left;
+  width: 90%; height: 70%;
+}
+#app #home .big--board .games--holder--container {
+  gap: 5px;
+  min-width: 850px;
+  padding: 0 5px;
+}
+#app #home .big--board .games--holder {
+  padding: 5px;
+  width:  200px; height: 150px;
+  background-color: var( --white);
+  box-shadow: 1px 1px 10px var(--black), 0px -1px 2px var(--white);
+}
+#app #home .big--board .games--holder .info--holder {
+  width: 60%;
+  flex-direction: column;
+}
+#app #home .big--board .games--holder .info--holder .hook--text{
+  width: 100%;
+  text-align: left;
+  position: relative;
+  color: var(--black);
+  text-shadow: 0 0 0 transparent;
+}
+#app #home .big--board .games--holder .info--holder .info--text {
+  margin: 5px 0;
+  font-size: 0.67em;
+  color: rgb(43, 40, 40);
+  line-height: 13px;
+}
+#app #home .big--board .games--holder .info--holder #high--score::after {
+  content: '';
+  top: 0; left: 0;
+  position: absolute;
+  border-radius: 5px;
+  width: 20%; height: 2px;
+  background-color: var(--black);
+}
+#app #home .big--board .games--holder .info--holder a {
+  padding: 5px;
+  margin-top: 3px;
+  font-size: 0.9em;
+  text-align: center;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  font-family: 'myfontlight';
+  background-color: var(--black);
+  box-shadow: 0 1px 2px var(--black), 0 -1px 1px var(--white);
+}
+#app #home .big--board .games--holder .img--holder {
+  width: 25%;
+}
+#app #home .big--board .games--holder .img--holder svg {
+  width: 100%;
+  fill: var(--black);
+}
+#app #home .big--board .games--holder .img--holder.big svg {
+  width: 150%;
+  transform: scale(1.4);
+}
+
+
+
+/* custom styling for minut section */
+#app #minute__game .options--holder .options {
+  width: 30%; height: 30%;
+}
+#app #minute__game .note--holder .high--score--holder  {
+  width: 120px;
+}
+#app #minute__game .note--holder .boost--holder  {
+  font-size: 1.7em;
+  letter-spacing: 3px;
+}
+
+
+
+
+
+
+/* write section */
+#app #el__write {
+  border: 0;
+  justify-content: space-between;
+}
+#app #el__write .inputs--holder {
+  padding: 5px;
+  width: 100%; height: 30%;
+
+  -webkit-box-shadow:  0 -1px 2px var( --white ), 
+  1px 2px 8px var( --black );
+  -moz-box-shadow:  0 -1px 2px var( --white ), 
+  1px 2px 8px var( --black );
+  box-shadow: inset 0 -2px 4px var( --black ), 
+     inset 0px 2px 4px var( --black );
+}
+#app #el__write .inputs--holder .inp--dash.empty {
+  transform: translateY(5px);
+}
+#app #el__write .inputs--holder .inp--dash {
+  width: 15px;
+  font-size: 1.1em;
+  font-weight: bold;
+  padding-bottom: 1px;
+  text-transform: capitalize;
+  border-bottom: 2px solid var(--black);
+}
+#app #el__write .tip--holder {
+  transform: scale(0.7);
+  width: 100px; height: 100px;
+
+  -webkit-box-shadow:  0 -1px 2px var( --white ), 
+  1px 2px 8px var( --black );
+  -moz-box-shadow:  0 -1px 2px var( --white ), 
+  1px 2px 8px var( --black );
+  box-shadow: inset 0 -4px 8px var( --black ), 
+     inset 0px 4px 8px var( --black );
+}
+#app #el__write .tip--holder p{
+  font-size: 2em;
+}
+#app #el__write .tip--holder p sub{
+  padding: 3px;
+  font-size: 0.45em;
+  letter-spacing: 1px;
+}
+#app #el__write .letter--holder {
+  gap: 11px;
+  display: grid;
+  padding-bottom: 10px;
+  grid-auto-rows: 30px;
+  justify-content: center;
+  border-top: 1px solid var(--white);
+  grid-template-columns: repeat(20, 2px);
+}
+#app #el__write .letter--holder .letters {
+  overflow: visible;
+  grid-column: span 2;
+  text-transform: capitalize;
+}
+#app #el__write .letter--holder .letters.large {
+  grid-column: span 3;
+  border-radius: 12px;
+  background-color: var(--black);
+}
+#app #el__write .letter--holder svg {
+  width: 60%;
+  fill: var(--white);
+}
+#app #el__write .letter--holder .letters:hover {
+  color: var(--black);
+}
+
+
+
+#app #element__list {
+  overflow-y: scroll;
+  width: 100%; height: 100%;
+  justify-content: flex-start;
+}
+#app #element__list .element--container {
+  justify-content: start;
+  width: 100%; min-height: 700%;
+}
+#app #element__list .element:first-of-type {
+  margin-top: 0;
+  background-color: var(--black);
+}
+#app #element__list .element:nth-child(2) {
+  margin-top: 0;
+}
+#app #element__list .element span {
+  font-size: 0.9em;
+  text-align: center;
+}
+#app #element__list .element {
+  width: 100%;
+  padding: 2px 0;
+  margin-top: 3px;
+  justify-content: space-between;
+}
+#app #element__list .element span:first-child {
+  width: 45%;
+  text-align: left;
+}
+#app #element__list .element span:nth-child(2) {
+  padding-right: 2px;
+}
+#app #element__list .element span:last-child {
+  width: 25%;
+  margin-left: 5px;
+}
+#app #element__list .element:nth-child(even) {
+  color: var(--black);
+  background-color: var(--white);
+}
