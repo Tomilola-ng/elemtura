@@ -828,6 +828,4 @@ updateName();
 document.location.hash = 'home';
 min_score__tag.innerText = min__score;
 
-var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-if (isMobile) window.addEventListener('touchStart', sortEvent);
-if (!isMobile) window.addEventListener('click', sortEvent);
+window.addEventListener('click', sortEvent);
