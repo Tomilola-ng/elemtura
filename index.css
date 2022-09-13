@@ -231,12 +231,10 @@ p span.unseen {
   border: 3px solid var( --white );
  
   height: 57px; width: 57px;
-  word-spacing: -2px;
   transform: scale(0.5);
 } 
-#app #atom__guess .note--holder .boost--holder sub,
-#app #atom__guess .note--holder .boost--holder sup {
-  font-size: 20px;
+#app #atom__guess .note--holder .boost--holder p {
+  font-size: 40px;
 }
 #app #atom__guess .note--holder .boost--holder.used {
   --white : rgb(179, 174, 174);
