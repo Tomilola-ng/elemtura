@@ -765,7 +765,7 @@ let updateTimer = () => {
 }
 
 let resetTime = () => {
-  time__var = 30;
+  time__var = 50;
   timeBool = false;
 }
 
