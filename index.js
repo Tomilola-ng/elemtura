@@ -641,7 +641,7 @@ let playGame = (e) => {
 
 let playMinuteGame = (e) => {
   Store.update_elemtura_teeo_algorithms_var_min_no();  
-  console.log(min__var());
+
   let tag = e.target.classList;
 
   if (!timeBool) return lose();
@@ -765,7 +765,7 @@ let updateTimer = () => {
 }
 
 let resetTime = () => {
-  time__var = 50;
+  time__var = 30;
   timeBool = false;
 }
 
@@ -825,6 +825,7 @@ elements.forEach(e => {
 updateBoost();
 updateScore();
 updateName();
+timer();
 document.location.hash = 'home';
 min_score__tag.innerText = min__score;
 
