@@ -86,7 +86,7 @@ p span.unseen {
 
 /* view control */
 #app {
-  min-width: 400px;
+  min-width: 600px;
   min-height: 600px;
   
   position: relative;
@@ -153,7 +153,7 @@ p span.unseen {
 /* game-- section */
 
 .game__board__container {
-  width: 300px; height: 500px;
+  width: 400px; height: 95vh;
   background-color: rgba(255,255,255,0.2);
   
   backdrop-filter: blur(12px);
@@ -231,10 +231,12 @@ p span.unseen {
   border: 3px solid var( --white );
  
   height: 57px; width: 57px;
+  word-spacing: -2px;
   transform: scale(0.5);
 } 
-#app #atom__guess .note--holder .boost--holder p {
-  font-size: 40px;
+#app #atom__guess .note--holder .boost--holder sub,
+#app #atom__guess .note--holder .boost--holder sup {
+  font-size: 20px;
 }
 #app #atom__guess .note--holder .boost--holder.used {
   --white : rgb(179, 174, 174);
@@ -511,7 +513,7 @@ p span.unseen {
   grid-auto-rows: 30px;
   justify-content: center;
   border-top: 1px solid var(--white);
-  grid-template-columns: repeat(20, 2px);
+  grid-template-columns: repeat(20, 2%);
 }
 #app #el__write .letter--holder .letters {
   overflow: visible;
